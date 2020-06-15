@@ -14,15 +14,12 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
-
-// API route group
-$router->group(['prefix' => 'api'], function () use ($router) {
-    // Matches "/api/register
-    $router->post('register', 'AuthController@register');
+// Matches "/api/register
+$router->post('register', 'AuthController@register');
     // Matches "/api/login
-    $router->post('login', 'AuthController@login');
+$router->post('login', 'AuthController@login');
 
-    // Get Caregories
+// Get Caregories
 $router->get('/categories', ['uses' => 'CategoryController@showAllCategories']);
 $router->get('/categories/{categoria_id}', ['uses' => 'CategoryController@showOneCategory']);
 
@@ -41,4 +38,4 @@ $router->get('/categories/{categoria_id}/products/{product_id}', ['uses' => 'Cat
 $router->put('/categories/{categoria_id}/products/{product_id}', ['uses' => 'CategoryController@updateProduct']);
 //Delete Products
 $router->delete('/categories/{categoria_id}/products/{product_id}', ['uses' => 'CategoryController@deleteProduct']);
- });
+
